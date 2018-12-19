@@ -1,6 +1,6 @@
 const wiki = require("./models").Wiki;
-const User = require("./models").User
-
+const User = require("./models").User;
+const Authorizer = require("../policies/application");
 
 
 module.exports = {
