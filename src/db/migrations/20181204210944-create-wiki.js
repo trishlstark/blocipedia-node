@@ -9,10 +9,17 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      description: {
-        type: Sequelize.STRING
+      body: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      private: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,
@@ -22,23 +29,16 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      body: {
-        type: Sequelize.STRING,
-      },
-      private: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: false
-      },
       userId: {
         type: Sequelize.INTEGER,
-        onDelete: "CASCADE", // delete post if parent topic is deleted
-        allowNull: false,    // validation to prevent null value
-        references: {        // association information
-          model: "Users",   // table name
-          key: "id",         // attribute to use
-          as: "userId"      // reference as topicId
+        onDelete: "CASCADE",
+        allowNull: false,
+        references: {
+          model: "Users",
+          key: "id",
+          as: "userId"
         }
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
