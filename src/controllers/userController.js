@@ -50,6 +50,7 @@ module.exports = {
         req.flash("notice", "You've successfully signed out!");
         res.redirect("/");
     },
+    
     show(req, res, next){
          userQueries.getUser(req.params.id, (err, result) => {
      
@@ -60,7 +61,9 @@ module.exports = {
              res.render("users/show", {...result});
            }
          });
-       }
+         }
+         
+       
 
     
 }

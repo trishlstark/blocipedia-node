@@ -1,6 +1,7 @@
 const wiki = require("./models").Wiki;
 const User = require("./models").User;
 const Authorizer = require("../policies/application");
+require("dotenv").config();
 
 
 module.exports = {
