@@ -1,4 +1,3 @@
-
 const wikiQueries = require("../db/queries.wikis.js");
 const Authorizer = require("../policies/application");
 
@@ -8,7 +7,7 @@ module.exports = {
 
   index(req, res, next){
 
-     wikiQueries.getAllwikis((err, wikis) => {
+     wikiQueries.getAllWikis((err, wikis) => {
 
        if(err){
          res.redirect(500, "static/index");

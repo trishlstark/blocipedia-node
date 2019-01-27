@@ -6,7 +6,7 @@ require("dotenv").config();
 
 module.exports = {
 
-  getAllwikis(callback){
+  getAllWikis(callback){
     return wiki.all()
     .then((wikis) => {
       callback(null, wikis);
@@ -90,7 +90,7 @@ module.exports = {
   privateToPublic(id){
     return Wiki.all()
       .then((wiki) => {
-        wikis.forEach((wiki) => {
+        wiki.forEach((wiki) => {
           if(wiki.userId == id && wiki.private == true){
             wiki.update({
               private:false
