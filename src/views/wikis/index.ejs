@@ -15,10 +15,12 @@
       <% } %>
         <ul class="list-group">
 
-        <% wikis.forEach((Wiki) => { %>
+         <% wikis.forEach((wiki) => { %>
+          <% if(wiki.private === false){ %>
           <li class="list-group-item">
-            <a href="/wikis/<%= Wiki.id %>"> <%= Wiki.title %> </a>
+            <a href="/wikis/<%= wiki.id %>"> <%= wiki.title %> </a>
           </li>
+          <% } %>
         <% }) %>
       </ul>
     </main>

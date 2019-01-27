@@ -1,3 +1,4 @@
+
 'use strict';
 
 module.exports = {
@@ -8,12 +9,10 @@ module.exports = {
       {
         type: Sequelize.STRING,
         allowNull: false,
-
-        defaultValue: 0
+        defaultValue: "standard"
       }
     );
   },
-
   down: (queryInterface, Sequelize) => {
     return queryInterface.removeColumn("Users", "role");
   }
