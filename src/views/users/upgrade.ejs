@@ -28,7 +28,7 @@
 
 		<% if(currentUser && currentUser.role == "premium") { %>
 			<h1>Sorry to see you aren't enjoying premium membership</h1>
-            <h2>Are you sure you want to downgrade?</h2> 
+            <p>Are you sure you want to downgrade?</p> 
 
             </ul>
 			<form action="/users/<%=currentUser.id%>/downgrade" method="POST"> 

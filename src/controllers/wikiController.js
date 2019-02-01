@@ -51,7 +51,7 @@ module.exports = {
          private: req.body.private,
          userId: req.user.id
        };
-       wikiQueries.addwiki(newwiki, (err, wiki) => {
+       wikiQueries.addwiki(newWiki, (err, wiki) => {
          if(err){
            res.redirect(500, "wikis/new");
          } else {
@@ -78,7 +78,7 @@ module.exports = {
 
   destroy(req, res, next){
       
-          wikiQueries.deletewiki(req, (err, wiki) => {
+          wikiQueries.deleteWiki(req, (err, wiki) => {
             if(err){
               var error = Number.isInteger(err) ? err : 500;
               res.redirect(error, `/wikis/${req.params.id}`)
@@ -108,7 +108,7 @@ module.exports = {
 
   update(req, res, next){
 
-              wikiQueries.updatewiki(req, req.body, (err, wiki) => {
+              wikiQueries.updateWiki(req, req.body, (err, wiki) => {
                 if(err || wiki == null){
                   res.redirect(401, `/wikis/${req.params.id}/edit`);
                 } else {

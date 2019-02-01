@@ -26,10 +26,10 @@ module.exports = {
    })
  },
   
-  addwiki(newwiki, callback){
+  addwiki(newWiki, callback){
     return wiki.create({
-      title: newwiki.title,
-      body: newwiki.body,
+      title: newWiki.title,
+      body: newWiki.body,
       private: newWiki.private,
       userId: newWiki.userId
     })
@@ -42,7 +42,7 @@ module.exports = {
   },
 
   deleteWiki(req, callback){
-    return Wiki.findById(req.params.id)
+    return wiki.findById(req.params.id)
     .then((wiki) => {
       const authorized = new Authorizer(req.user, wiki).destroy();
       if(authorized) {
@@ -61,7 +61,7 @@ module.exports = {
   },
   
   updateWiki(req, updatedWiki, callback){
-    return Wiki.findById(req.params.id)
+    return wiki.findById(req.params.id)
     .then((wiki) => {
 
       if(!wiki){
@@ -88,7 +88,7 @@ module.exports = {
   },
 
   privateToPublic(id){
-    return Wiki.all()
+    return wiki.all()
       .then((wiki) => {
         wiki.forEach((wiki) => {
           if(wiki.userId == id && wiki.private == true){
