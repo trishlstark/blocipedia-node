@@ -28,7 +28,7 @@
 
 		<% if(currentUser && currentUser.role == "premium") { %>
 			<h1>Sorry to see you aren't enjoying premium membership</h1>
-            <p>Are you sure you want to downgrade?</p> 
+            <p>Are you sure you want to downgrade? All of your private wikis will be made public</p> 
 
             </ul>
 			<form action="/users/<%=currentUser.id%>/downgrade" method="POST"> 
