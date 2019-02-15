@@ -1,7 +1,7 @@
 const wiki = require("./models").Wiki;
 const User = require("./models").User;
 const Authorizer = require("../policies/application");
-require("dotenv").config();
+const Collaborator = require("./models").Collaborator;
 
 
 module.exports = {
@@ -16,15 +16,25 @@ module.exports = {
     })
   },
 
-  getwiki(id, callback){
-  return wiki.findById(id)
-   .then((wiki) => {
-     callback(null, wiki);
-   })
-   .catch((err) => {
-     callback(err);
-   })
- },
+  getWiki(id, callback){
+    let result = {};
+      return wiki.findById(id)
+      .then((wiki) => {
+          if(!wiki) {
+          callback(404);
+        } else {
+            result["wiki"] = wiki;
+            Collaborator.scope({method: ["collaboratorsFor", id]}).all()
+            .then((collaborators) => {
+            result["collaborators"] = collaborators;
+              callback(null, result);
+        })
+        .catch((err) => {
+          callback(err);
+        })
+      }
+    })
+  },
   
   addwiki(newWiki, callback){
     return wiki.create({
